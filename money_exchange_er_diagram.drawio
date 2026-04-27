@@ -1,0 +1,73 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="ER Diagram">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- USER -->
+        <mxCell id="2" value="USER&#10;PK user_id&#10;full_name&#10;email&#10;password_hash&#10;phone_number&#10;created_at" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="200" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- WALLET -->
+        <mxCell id="3" value="WALLET&#10;PK wallet_id&#10;FK user_id&#10;FK currency_code&#10;balance&#10;status&#10;created_at" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="300" y="40" width="220" height="150" as="geometry"/>
+        </mxCell>
+
+        <!-- CURRENCY -->
+        <mxCell id="4" value="CURRENCY&#10;PK currency_code&#10;currency_name&#10;symbol&#10;country&#10;decimal_places&#10;is_active" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="600" y="40" width="220" height="150" as="geometry"/>
+        </mxCell>
+
+        <!-- TRANSACTION -->
+        <mxCell id="5" value="TRANSACTION&#10;PK transaction_id&#10;FK from_wallet_id&#10;FK to_wallet_id&#10;amount&#10;FK rate_id&#10;transaction_time&#10;status" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="300" y="300" width="260" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- PAYMENT METHOD -->
+        <mxCell id="6" value="PAYMENT METHOD&#10;PK payment_method_id&#10;FK user_id&#10;method_type&#10;provider_name&#10;account_reference&#10;is_verified&#10;created_at" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="300" width="220" height="150" as="geometry"/>
+        </mxCell>
+
+        <!-- EXCHANGE RATE -->
+        <mxCell id="7" value="EXCHANGE RATE&#10;PK rate_id&#10;FK base_currency&#10;FK target_currency&#10;rate_value&#10;effective_date&#10;source" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="600" y="300" width="240" height="150" as="geometry"/>
+        </mxCell>
+
+        <!-- RELATIONSHIPS -->
+
+        <!-- User to Wallet -->
+        <mxCell id="8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="2" target="3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- User to Payment Method -->
+        <mxCell id="9" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" edge="1" parent="1" source="2" target="6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Wallet to Transaction -->
+        <mxCell id="10" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" edge="1" parent="1" source="3" target="5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Wallet to Currency -->
+        <mxCell id="11" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" edge="1" parent="1" source="4" target="3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Currency to Exchange Rate -->
+        <mxCell id="12" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" edge="1" parent="1" source="4" target="7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Exchange Rate to Transaction -->
+        <mxCell id="13" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" edge="1" parent="1" source="7" target="5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
